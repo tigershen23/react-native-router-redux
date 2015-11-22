@@ -1,0 +1,16 @@
+{
+  "name": "react-native-router-redux",
+  "version": "0.1.0",
+  "description": "A routing library for React Native and Redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "routing",
+    "redux",
+    "react-native"
+  ],
+  "author": "Team Qwikly",
+  "license": "ISC"
+}
