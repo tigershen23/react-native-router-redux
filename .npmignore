@@ -3,11 +3,7 @@
 .DS_Store
 
 # Xcode
-!**/*.xcodeproj
-!**/*.pbxproj
-!**/*.xcworkspacedata
-!**/*.xcsettings
-!**/*.xcscheme
+#
 build/
 *.pbxuser
 !default.pbxuser
@@ -30,3 +26,5 @@ project.xcworkspace
 #
 node_modules/
 npm-debug.log
+
+example/
