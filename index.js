@@ -5,6 +5,8 @@ import TabBar from './src/TabBar';
 import * as actions from './src/actions';
 import reducer from './src/reducer';
 
+const actionTypes = actions.actionTypes;
+
 const actionMap = {
   push: actionTypes.ROUTER_PUSH,
   replace: actionTypes.ROUTER_REPLACE,
