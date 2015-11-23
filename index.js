@@ -2,7 +2,8 @@ import React, { Navigator, StyleSheet, View } from 'react-native';
 import Animations from './src/Animations';
 import { NavBar } from './src/NavBar';
 import TabBar from './src/TabBar';
-import { actionTypes } from './src/actions';
+import actions, { actionTypes } from './src/actions';
+import reducer from './src/reducer';
 
 const actionMap = {
   push: actionTypes.ROUTER_PUSH,
@@ -336,6 +337,8 @@ module.exports = {
   Route,
   Router,
   Schema,
-  TabRoute,
   TabBar,
+  TabRoute,
+  actions,
+  reducer,
 }
