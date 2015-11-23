@@ -2,7 +2,7 @@ import React, { Navigator, StyleSheet, View } from 'react-native';
 import Animations from './src/Animations';
 import { NavBar } from './src/NavBar';
 import TabBar from './src/TabBar';
-import actions, { actionTypes } from './src/actions';
+import * as actions from './src/actions';
 import reducer from './src/reducer';
 
 const actionMap = {
