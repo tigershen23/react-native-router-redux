@@ -194,13 +194,16 @@ class Router extends React.Component {
       });
     }
 
+    var props = Object.assign({}, this.props);
+    delete props.children;
+    delete props.initial;
+
     var child = null;
     if (Component) {
       child = (
         <Component
           key={route.name}
-          navigator={navigator}
-          route={route}
+          {...props}
           {...route.passProps}
           />
       );
@@ -218,7 +221,7 @@ class Router extends React.Component {
   }
 
   getRoute(routeProps, router = { data: {} }) {
-    const { data } = router;
+    const { data = {} } = router;
 
     if (!routeProps) {
       return {};
@@ -254,17 +257,12 @@ class Router extends React.Component {
       );
     }
 
-    var routerProps = Object.assign({}, this.props);
-    delete routerProps.children;
-
-    var props = Object.assign({}, routeProps, data, routerProps);
-
     return {
       component: routeProps.component,
       footer: routeProps.hideFooter ? null : footer,
       name: routeProps.name,
       navigationBar: routeProps.hideNavBar ? null : navBar,
-      passProps: props,
+      passProps: { routerData: data },
       sceneConfig: { ...sceneConfig },
     }
   }

@@ -1,6 +1,6 @@
 {
   "name": "react-native-router-redux",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A routing library for React Native and Redux",
   "main": "index.js",
   "scripts": {
