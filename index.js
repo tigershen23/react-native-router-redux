@@ -214,8 +214,8 @@ class Router extends React.Component {
 
     return (
       <View style={styles.transparent}>
-        {navBar}
         {child}
+        {navBar}
       </View>
     )
   }
