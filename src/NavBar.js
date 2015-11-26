@@ -3,7 +3,7 @@ import React, { Component, StyleSheet } from 'react-native';
 
 const leftButton = (props = {}, transitioning) => {
   if (props.navLeft && props.navLeft._isReactElement) {
-    return navLeft;
+    return props.navLeft;
   }
 
   let handler = () => {};
@@ -24,7 +24,7 @@ const leftButton = (props = {}, transitioning) => {
 
 const rightButton = (props = {}) => {
   if (props.navRight && props.navRight._isReactElement) {
-    return navRight;
+    return props.navRight;
   }
 
   return {
