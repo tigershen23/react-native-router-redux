@@ -55,6 +55,7 @@ class Router extends React.Component {
     this.schemas = {
       default: {
         actions: props.actions,
+        layout: 'flex',
         sceneConfig: Animations.FlatFloatFromRight,
       },
     };
@@ -212,12 +213,25 @@ class Router extends React.Component {
       child = React.addons.cloneWithProps(child, {schemas: this.schemas});
     }
 
-    return (
-      <View style={styles.transparent}>
-        {child}
-        {navBar}
-      </View>
-    )
+    const layout = this.schemas.default.layout;
+
+    if (layout === 'flex') {
+      return (
+        <View style={styles.transparent}>
+          {navBar}
+          {child}
+        </View>
+      );
+    } else if (layout === 'absolute') {
+      return (
+        <View style={styles.transparent}>
+          {child}
+          {navBar}
+        </View>
+      );
+    } else {
+      return console.error('Layout should be flex or absolute.');
+    }
   }
 
   getRoute(routeProps, router = { data: {} }) {
