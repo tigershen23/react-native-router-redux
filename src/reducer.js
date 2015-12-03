@@ -59,19 +59,18 @@ export default createReducer(initialState, {
   [actionTypes.ROUTER_INIT]: (state, { payload }) => {
     const [tabs, tabStack] = findTabStack(
       state.tabs, payload.tabBarName, payload.name);
+    let tabsUpdates = { tabs };
     let updates = {};
 
     if (tabStack) {
       tabStack.push(payload.name);
+      tabsUpdates.activeTab = payload.name;
       updates = defaultUpdates(payload, tabStack);
     } else {
       updates = defaultUpdates(payload, [payload.name]);
     }
 
-    return Object.assign({}, state, updates, {
-      activeTab: payload.name,
-      tabs,
-    });
+    return Object.assign({}, state, updates, tabsUpdates);
   },
   [actionTypes.ROUTER_POP]: (state, { payload = {} }) => {
     payload.tabBarName = payload.tabBarName || state.activeTabBar;
