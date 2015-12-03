@@ -143,7 +143,11 @@ class Router extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.router.currentRoute !== nextProps.router.currentRoute) {
+    const routeKey = router => (
+      '' + router.activeTabBar + router.activeTab + router.currentRoute
+    );
+
+    if (routeKey(this.props.router) !== routeKey(nextProps.router)) {
       this.handleRouteChange(nextProps.router);
     }
   }
