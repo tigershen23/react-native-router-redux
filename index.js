@@ -170,7 +170,7 @@ class Router extends React.Component {
     let footer = currentRoute.footer;
     if (footer) {
       footer = React.cloneElement(footer, {
-        navigator: this.refs.nav,
+        navigator: this.nav,
       });
     }
 
@@ -179,7 +179,7 @@ class Router extends React.Component {
         <Navigator
           configureScene={(route) => route.sceneConfig}
           initialRoute={this.getRoute(this.initialRoute, this.props.router)}
-          ref="nav"
+          ref={(nav) => this.nav = nav}
           renderScene={this.renderScene.bind(this)}
         />
         {footer}
@@ -299,33 +299,33 @@ class Router extends React.Component {
         ));
       }
 
-      this.refs.nav.immediatelyResetRouteStack(routes);
+      this.nav.immediatelyResetRouteStack(routes);
     }
 
     if (mode === actionTypes.ROUTER_POP) {
       const num = data.num || 1;
-      const routes = this.refs.nav.getCurrentRoutes();
+      const routes = this.nav.getCurrentRoutes();
       if (num < routes.length) {
-        this.refs.nav.popToRoute(routes[routes.length - 1 - num]);
+        this.nav.popToRoute(routes[routes.length - 1 - num]);
       } else {
-        this.refs.nav.popToTop();
+        this.nav.popToTop();
       }
     }
 
     if (mode === actionTypes.ROUTER_PUSH) {
-      this.refs.nav.push(this.getRoute(
+      this.nav.push(this.getRoute(
         this.routes[router.currentRoute], router
       ));
     }
 
     if (mode === actionTypes.ROUTER_REPLACE) {
-      this.refs.nav.replace(this.getRoute(
+      this.nav.replace(this.getRoute(
         this.routes[router.currentRoute], router
       ));
     }
 
     if (mode === actionTypes.ROUTER_RESET) {
-      this.refs.nav.immediatelyResetRouteStack([
+      this.nav.immediatelyResetRouteStack([
         this.getRoute(this.routes[router.currentRoute], router)
       ]);
     }
