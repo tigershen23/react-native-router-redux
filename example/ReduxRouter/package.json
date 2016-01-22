@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "preinstall": "rm -rf node_modules/react-native-router-redux",
     "start": "react-native start"
   },
   "dependencies": {
