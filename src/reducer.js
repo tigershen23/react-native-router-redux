@@ -34,6 +34,7 @@ const findTabStack = (tabState, tabBar, tab) => {
 
 export default createReducer(initialState, {
   [actionTypes.ROUTER_CHANGE_TAB]: (state, { payload = {} }) => {
+    if (typeof(payload.navigator) === "undefined") { return state }
     const routeStacks = Object.assign({}, state.routeStacks);
     const currentRoutes = payload.navigator.getCurrentRoutes();
     payload.tabBarName = payload.tabBarName || state.activeTabBar;
